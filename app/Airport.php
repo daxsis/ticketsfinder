@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Airport extends Model
 {
+    use Filterable;
+
     /**
      * Get the value of the model's route key.
      *
