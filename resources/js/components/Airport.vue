@@ -52,7 +52,7 @@
             </b-form>
         <b-row>
             <AirportTable class="mt-2" v-bind:airports="airports" v-if="showTable"></AirportTable>
-            <pagination v-show="showTable" :data="airports" :limit="10" @pagination-change-page="getResults">
+            <pagination v-show="showTable" :data="airports" :limit="5" @pagination-change-page="getResults">
                 <span slot="prev-nav">&lt; Previous</span>
                 <span slot="next-nav">Next &gt;</span>
             </pagination>
