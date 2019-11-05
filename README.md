@@ -126,7 +126,7 @@ Tickets Finder application Laravel v6.4.1 / Vuejs 2.6.10
 ### External data sources
 
 Two external sources were used in order to seed the table.
-File are included in the repository under `/storage/app/teset_data`.
+File are included in the repository under `/storage/app/test_data`.
 
 * [mwgg/Airports](https://github.com/mwgg/Airports) - A JSON database of 28k+ airports with ICAO/IATA codes, names, cities, two-letter country identifiers, elevation, latitude & longitude, and a timezone identifier 
 * [npow/airline-codes](https://github.com/npow/airline-codes/blob/master/airlines.json) - An NPM module containing airline codes (IATA) and other information
