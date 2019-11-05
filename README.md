@@ -66,7 +66,7 @@ Tickets Finder application Laravel v6.4.1 / Vuejs 2.6.10
 
 ### Example Requests
 
-* Fethes all airports with the given query parameters. Parameters chained with `&`
+* Fetches all airports with the given query parameters. Parameters chained with `&`
 
     ``` bash
     GET /api/airports?[Parameters]
@@ -100,7 +100,7 @@ Tickets Finder application Laravel v6.4.1 / Vuejs 2.6.10
     GET /api/trips
     ```
     
-* Generate a new trip and returnes $tripUid
+* Generates a new trip and returnes $tripUid
 
     ```bash
     POST /api/trips
@@ -115,7 +115,7 @@ Tickets Finder application Laravel v6.4.1 / Vuejs 2.6.10
     ```bash
     GET /api/trips/{$tripUid}
     ```
-* Remove the trip with $tripUid and dataches all of its flights from pivot table
+* Removes the trip with $tripUid and dataches all of its flights from pivot table
 
     ```bash
     DELETE /api/trips/{$tripUid}
