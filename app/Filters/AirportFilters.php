@@ -20,7 +20,7 @@ class AirportFilters extends QueryFilters
     }
 
     /**
-     * Filter by IATA code.
+     * Filter by ICAO code.
      *
      * @param string $iata
      * @return Builder
