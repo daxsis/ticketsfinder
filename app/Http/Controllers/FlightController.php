@@ -6,6 +6,7 @@ use App\Flight;
 use App\Http\Resources\FlightResource;
 use App\Filters\FlightFilters;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class FlightController extends Controller
 {
@@ -14,7 +15,7 @@ class FlightController extends Controller
      * Display a listing of the resource.
      *
      * @param FlightFilters $filters
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function index(FlightFilters $filters)
     {
@@ -27,11 +28,12 @@ class FlightController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Flight  $flight
-     * @return Flight
+     * @param Flight $flight
+     * @return FlightResource
      */
     public function show(Flight $flight)
     {
-        return $flight;
+        return new FlightResource($flight);
     }
+
 }

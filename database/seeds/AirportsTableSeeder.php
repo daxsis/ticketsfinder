@@ -20,8 +20,8 @@ class AirportsTableSeeder extends Seeder
         $airports = [];
         $timestamp = Carbon::now()->toDateTimeString();
 
-        foreach($airportsAll as $airport) {
-            if($airport['country'] !== 'CA') {
+        foreach ($airportsAll as $airport) {
+            if ($airport['country'] !== 'CA') {
                 continue;
             }
             $airports[] = [

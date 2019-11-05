@@ -14,7 +14,7 @@ class CreateFlightsTable extends Migration
     public function up()
     {
         Schema::create('flights', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('airline_id')->unsigned();
             $table->unsignedSmallInteger('number');
             $table->string('uid');
@@ -27,15 +27,6 @@ class CreateFlightsTable extends Migration
             $table->float('price');
             $table->timestamps();
         });
-
-//        "airline": "AC",
-//        "number": "301",
-//        "departure_airport": "YUL",
-//        "departure_time": "07:35",
-//        "arrival_airport": "YVR",
-//        "arrival_time": "10:05",
-//        "price": "273.23"
-
     }
 
     /**
@@ -45,6 +36,7 @@ class CreateFlightsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('flight_trip');
         Schema::dropIfExists('flights');
     }
 }

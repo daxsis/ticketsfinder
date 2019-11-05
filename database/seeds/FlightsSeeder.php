@@ -15,19 +15,16 @@ class FlightsSeeder extends Seeder
      */
     public function run()
     {
-        Flight::truncate();
-
         $timestamp = Carbon::now();
         $airlineIds = Airline::pluck('id')->toArray();
         $airports = Airport::pluck('id')->toArray();
 
         $flights = array();
-        for($i = 0; $i <= 500; $i++) {
+        for ($i = 0; $i <= 500; $i++) {
             $number = rand(100, 999);
             $airlineId = $airlineIds[array_rand($airlineIds)];
             $airline = Airline::where('id', $airlineId)->first();
             $departure_airport = Airport::where('id', $airports[array_rand($airports)])->first();
-//            dd($departure_airport);
             $arrival_airport = Airport::where('id', $airports[array_rand($airports)])->first();
 
             $flight = factory(Flight::class)->raw([

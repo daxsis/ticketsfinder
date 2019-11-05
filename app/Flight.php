@@ -4,6 +4,8 @@ namespace App;
 
 use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Flight extends Model
 {
@@ -44,7 +46,7 @@ class Flight extends Model
     /**
      * Find a departure airport for the flight
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function departure()
     {
@@ -54,7 +56,7 @@ class Flight extends Model
     /**
      * Find an arrival airport for the flight
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function arrival()
     {
@@ -64,10 +66,20 @@ class Flight extends Model
     /**
      * Find an airline responsible for serving the flight
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function airline()
     {
         return $this->belongsTo(Airline::class);
+    }
+
+    /**
+     * Get all trips referenced for this flight
+     *
+     * @return BelongsToMany
+     */
+    public function trips()
+    {
+        return $this->belongsToMany('App\Trips', 'flight_trip', 'flight_id', 'trip_id');
     }
 }

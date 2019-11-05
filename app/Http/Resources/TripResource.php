@@ -2,18 +2,22 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\Resource;
 
-class TripResource extends ResourceCollection
+class TripResource extends Resource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request
      * @return array
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'uid' => $this->uid,
+            'flights' => FlightResource::collection($this->flights),
+        ];
     }
 }

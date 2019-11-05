@@ -16,7 +16,7 @@ class FlightFilters extends QueryFilters
      */
     public function departure(string $city)
     {
-        return $this->airport_city($city, 'departure');
+        return $this->airport('city', $city, 'departure');
     }
 
     /**
@@ -27,8 +27,31 @@ class FlightFilters extends QueryFilters
      */
     public function arrival(string $city)
     {
-        return $this->airport_city($city, 'arrival');;
+        return $this->airport('city', $city, 'arrival');;
     }
+
+    /**
+     * Filter fights by airport ICAO code
+     *
+     * @param string $icao
+     * @return mixed
+     */
+    public function icao_from(string $icao)
+    {
+        return $this->airport('icao', $icao, 'departure');
+    }
+
+    /**
+     * Filter fights by airport ICAO code
+     *
+     * @param string $icao
+     * @return mixed
+     */
+    public function icao_to(string $icao)
+    {
+        return $this->airport('icao', $icao, 'arrival');
+    }
+
 
     /**
      * Filter by departure time.
@@ -57,14 +80,15 @@ class FlightFilters extends QueryFilters
     /**
      * Use departure/arrival relation to find airport that contains city.
      *
-     * @param $city
-     * @param $relationship
+     * @param string $column
+     * @param string $parameter
+     * @param string $relationship
      * @return mixed
      */
-    private function airport_city($city, $relationship)
+    private function airport($column, $parameter, $relationship)
     {
-        return $this->builder->whereHas($relationship, function ($builder) use ($city) {
-            $builder->where('city', 'like', '%' . $city . '%');
+        return $this->builder->whereHas($relationship, function ($builder) use ($column, $parameter) {
+            $builder->where($column, 'like', '%' . $parameter . '%');
         });
     }
 }

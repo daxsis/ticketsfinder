@@ -25,9 +25,9 @@ class AirportFilters extends QueryFilters
      * @param string $iata
      * @return Builder
      */
-    public function iata(string $iata)
+    public function icao(string $icao)
     {
-        return $this->builder->where('code', 'like', "%$iata%");
+        return $this->builder->where('icao', 'like', "%$icao%");
     }
 
     /**

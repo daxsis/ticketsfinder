@@ -14,10 +14,8 @@ class CreateTripsTable extends Migration
     public function up()
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->json('flights');
-            $table->enum('type', ['one way', 'round-trip', 'open-jaw trip', 'multi-city trip']);
-            $table->integer('price');
+            $table->increments('id');
+            $table->string('uid')->unique();
             $table->timestamps();
         });
     }

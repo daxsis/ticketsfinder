@@ -15,7 +15,8 @@ trait Filterable
      * @param QueryFilters $filters
      * @return mixed
      */
-    public function scopeFilter($query, QueryFilters $filters) {
+    public function scopeFilter($query, QueryFilters $filters)
+    {
         return $filters->apply($query);
     }
 }

@@ -6,6 +6,7 @@ use App\Airport;
 use App\Filters\AirportFilters;
 use App\Http\Resources\AirportResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AirportController extends Controller
 {
@@ -13,7 +14,7 @@ class AirportController extends Controller
      * Display a listing of the resource.
      *
      * @param AirportFilters $filters
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function index(AirportFilters $filters)
     {
@@ -26,7 +27,7 @@ class AirportController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Airport  $airport
+     * @param Airport $airport
      * @return Airport
      */
     public function show(Airport $airport)

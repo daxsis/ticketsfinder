@@ -1,12 +1,13 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
 use App\Airline;
 use App\Airport;
 use App\Flight;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Flight::class, function (Faker $faker) {
     $departure_time = Carbon::instance($faker->dateTimeBetween(
@@ -22,8 +23,12 @@ $factory->define(Flight::class, function (Faker $faker) {
         'airline_id' => $airline,
         'number' => $number,
         'uid' => $airline . $number,
-        'departure_airport' => function() { return factory(Airport::class)->create()->id; },
-        'arrival_airport' => function() { return factory(Airport::class)->create()->id; },
+        'departure_airport' => function () {
+            return factory(Airport::class)->create()->id;
+        },
+        'arrival_airport' => function () {
+            return factory(Airport::class)->create()->id;
+        },
         'departure_time' => $departure_time->toDateTimeString(),
         'arrival_time' => $departure_time->addHours($hours)->addMinutes($minutes)->toDateTimeString(),
         'hours' => $hours,

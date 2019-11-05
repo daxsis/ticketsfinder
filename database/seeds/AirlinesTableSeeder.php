@@ -19,8 +19,8 @@ class AirlinesTableSeeder extends Seeder
         $airlines = [];
         $timestamp = Carbon::now();
 
-        foreach($airlinesAll as $airline) {
-            if($airline['active'] == 'N' || $airline['icao'] == '') {
+        foreach ($airlinesAll as $airline) {
+            if ($airline['active'] == 'N' || $airline['icao'] == '') {
                 continue;
             }
 

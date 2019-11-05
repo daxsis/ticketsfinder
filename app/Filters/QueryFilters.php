@@ -40,15 +40,16 @@ abstract class QueryFilters
      * @param Builder $builder
      * @return Builder
      */
-    public function apply(Builder $builder) {
+    public function apply(Builder $builder)
+    {
         $this->builder = $builder;
 
-        foreach ($this->filters() as $name => $value)  {
-            if(! method_exists($this, $name)) {
+        foreach ($this->filters() as $name => $value) {
+            if (!method_exists($this, $name)) {
                 continue;
             }
 
-            if(strlen($value)) {
+            if (strlen($value)) {
                 $this->$name($value);
             } else {
 //                $this->$name();
@@ -63,7 +64,8 @@ abstract class QueryFilters
      *
      * @return array
      */
-    public function filters() {
+    public function filters()
+    {
         return $this->request->all();
     }
 }
