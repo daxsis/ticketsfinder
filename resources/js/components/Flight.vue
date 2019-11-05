@@ -79,7 +79,7 @@
                              @send-to-card="addToCart"></FlightTable>
             </transition>
         </b-row>
-        <pagination v-show="showTable" :data="resposne" :limit="10" @pagination-change-page="getResults">
+        <pagination v-show="showTable" :data="response" :limit="5" @pagination-change-page="getResults">
             <span slot="prev-nav">&lt; Previous</span>
             <span slot="next-nav">Next &gt;</span>
         </pagination>
@@ -105,7 +105,7 @@
                     icao_to: ''
                 },
                 flights: [],
-                resposne: {},
+                response: {},
                 fields: [
                     'Number',
                     'From',
@@ -131,7 +131,7 @@
                     .then(response => {
                         this.flights = response.data
                         this.flights = response.data.data.map(flight => this.prepareData(flight))
-
+                        this.response = response.data
                         this.loading = false
                         this.showTable = true
                     });
@@ -159,7 +159,8 @@
                 axios.get(url)
                     .then(res => {
                         this.flights = res.data.data.map(flight => this.prepareData(flight))
-                        this.resposne = res.data
+                        this.response = res.data
+                        console.log(res)
 
                         this.loading = false
                         this.showTable = true
